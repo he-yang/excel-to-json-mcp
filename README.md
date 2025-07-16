@@ -7,9 +7,28 @@ The Excel to JSON MCP (Model Context Protocol) provides a standardized interface
 - **excel_to_json_mcp_from_data**: Converts tab-separated or comma-separated text data
 - **excel_to_json_mcp_from_url**: Converts Excel from a provided URL
 
-## Endpoints
+## Server Config
 
-**`SSE`** https://mcp.wtsolutions.cn/excel-to-json-mcp-sse 📋
+```json
+{
+  "mcpServers": {
+    "excel_to_json_by_WTSolutions": {
+      "args": [
+        "mcp-remote",
+        "https://mcp.wtsolutions.cn/excel-to-json-mcp-sse"
+      ],
+      "command": "npx",
+      "tools": [
+        "excel_to_json_mcp_from_data",
+        "excel_to_json_mcp_from_url"
+      ]
+    }
+  }
+}
+
+```
+
+
 
 ## MCP Tools
 
