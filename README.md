@@ -5,10 +5,14 @@
 The Excel to JSON MCP (Model Context Protocol) provides a standardized interface for converting Excel and CSV data into JSON format using the Model Context Protocol. This MCP implementation offers two specific tools for data conversion:
 
 - **excel_to_json_mcp_from_data**: Converts tab-separated or comma-separated text data
-- **excel_to_json_mcp_from_url**: Converts Excel from a provided URL
+- **excel_to_json_mcp_from_url**: Converts Excel file (.xlsx) from a provided URL
 
 ## Server Config
 
+Transport: SSE
+URL: https://mcp.wtsolutions.cn/excel-to-json-mcp-sse
+
+Server Config JSON:
 ```json
 {
   "mcpServers": {
@@ -34,7 +38,7 @@ The Excel to JSON MCP (Model Context Protocol) provides a standardized interface
 
 ### excel_to_json_mcp_from_data
 
-Converts tab-separated or comma-separated text data into JSON format.
+Converts tab-separated Excel data or comma-separated CSV text data into JSON format.
 
 #### Parameters
 
@@ -61,7 +65,7 @@ Converts an Excel or CSV file from a provided URL into JSON format.
 
 | Parameter | Type   | Required | Description                                      |
 |-----------|--------|----------|--------------------------------------------------|
-| url       | string | Yes      | URL pointing to an Excel (.xlsx) or CSV file     |
+| url       | string | Yes      | URL pointing to an Excel (.xlsx)                 |
 
 #### Example Request
 
