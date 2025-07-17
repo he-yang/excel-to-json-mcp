@@ -34,7 +34,7 @@ You are solely responsible for:
 
 ## 6. Data Privacy
 
-We are committed to protecting your privacy. Your "Excel data","CSV data" or "File in provided URL" is transmitted securely via HTTPS and processed through our Cloudflare Workers-based Service. The data will not be stored, shared, or used by us for any purpose other than providing the Service. 
+We are committed to protecting your privacy. Your "Excel data","CSV data" or "File in provided URL" is transmitted securely via HTTPS and processed through our Cloudflare Workers-based Service. Detailed Privacy Policy, refer to [Privacy Policy](PRIVACY.md)
 
 ## 7. Disclaimer of Warranties
 
@@ -50,7 +50,7 @@ We reserve the right to terminate or suspend your access to the Service at any t
 
 ## 10. Governing Law
 
-This Agreement shall be governed by and construed in accordance with the laws of P.R.China, without regard to its conflict of law principles.
+This Agreement shall be governed by and construed in accordance with the laws of P.R.China, without regard to its conflict of law principles. To the extent that any lawsuit or court proceeding is permitted hereunder, you and WTSolutions agree to submit to the personal and exclusive jurisdiction of the court located within Beijing, China for the purpose of litigating all such disputes.
 
 ## 11. Changes to this Agreement
 
