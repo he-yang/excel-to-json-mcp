@@ -9,7 +9,10 @@ The Excel to JSON MCP (Model Context Protocol) provides a standardized interface
 
 ## Server Config
 
+### Using SSE
+
 Transport: SSE
+
 URL: https://mcp.wtsolutions.cn/excel-to-json-mcp-sse
 
 Server Config JSON:
@@ -31,8 +34,31 @@ Server Config JSON:
 }
 
 ```
+### Using Streamable HTTP
 
+Transport: Streamable HTTP
 
+URL: https://mcp.wtsolutions.cn/excel-to-json-mcp-shttp
+
+Server Config JSON:
+
+```json
+{
+  "mcpServers": {
+    "excel_to_json_by_WTSolutions": {
+      "args": [
+        "mcp-remote",
+        "https://mcp.wtsolutions.cn/excel-to-json-mcp-shttp"
+      ],
+      "command": "npx",
+      "tools": [
+        "excel_to_json_mcp_from_data",
+        "excel_to_json_mcp_from_url"
+      ]
+    }
+  }
+}
+```
 
 ## MCP Tools
 
