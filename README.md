@@ -166,6 +166,11 @@ The API returns descriptive error messages for common issues:
 - `Blank/Null/Empty cells in the first row not allowed`: When header row contains empty cells
 - `Server Internal Error`: When an unexpected error occurs
 
+## Service Agreement
+
+By using Excel to JSON MCP, you agree to the [service agreement](TERMS.md)
+
+
 ## Pricing
 
 Free for now.
