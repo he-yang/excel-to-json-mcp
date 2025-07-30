@@ -1,13 +1,21 @@
-# Excel to JSON MCP by WTSolutions Documentation
+# Excel to JSON MCP by WTSolutions
 
 ## Introduction
 
-The Excel to JSON MCP (Model Context Protocol) provides a standardized interface for converting Excel and CSV data into JSON format using the Model Context Protocol. This MCP implementation offers two specific tools for data conversion:
+The **Excel to JSON MCP** (Model Context Protocol) provides a standardized interface for converting Excel and CSV data into JSON format using the Model Context Protocol. This MCP implementation offers two specific tools for data conversion:
 
-- **excel_to_json_mcp_from_data**: Converts tab-separated or comma-separated text data
-- **excel_to_json_mcp_from_url**: Converts Excel file (.xlsx) from a provided URL
+- **excel_to_json_mcp_from_data**: Converts tab-separated Excel data or comma-separated CSV text data into JSON format.
+- **excel_to_json_mcp_from_url**: Converts Excel file (.xlsx) from a providedURL
+
+Excel to JSON MCP is part of Excel to JSON by WTSolutions:
+* [Excel to JSON Web App: Convert Excel to JSON directly in Web Browser.](https://excel-to-json.wtsolutions.cn/en/latest/WebApp.html)
+* [Excel to JSON Excel Add-in: Convert Excel to JSON in Excel, works with Excel environment seamlessly.](https://excel-to-json.wtsolutions.cn/en/latest/ExcelAddIn.html)
+* [Excel to JSON API: Convert Excel to JSON by HTTPS POST request.](https://excel-to-json.wtsolutions.cn/en/latest/API.html)
+* <mark>Excel to JSON MCP Service: Convert Excel to JSON by AI Model MCP SSE/StreamableHTTP request.</mark> (<-- You are here.)
 
 ## Server Config
+
+Available MCP Servers (SSE and Streamable HTTP):
 
 ### Using SSE
 
@@ -16,6 +24,7 @@ Transport: SSE
 URL: https://mcp.wtsolutions.cn/excel-to-json-mcp-sse
 
 Server Config JSON:
+
 ```json
 {
   "mcpServers": {
@@ -72,7 +81,14 @@ Converts tab-separated Excel data or comma-separated CSV text data into JSON for
 |-----------|--------|----------|-----------------------------------------------------------------------------|
 | data      | string | Yes      | Tab-separated or comma-separated text data with at least two rows (header row + data row) |
 
+> Note:
+> Input data must be tab-separated (Excel) or comma-separated (CSV) text with at least two rows (header row + data row).
+> - The first row will be considered as "header" row, and this MCP will use it as column names, subsequently JSON keys.
+> - The following rows will be considered as "data" rows, and this MCP will treat them as JSON values.
+
 #### Example Request
+
+Tab-separated data:
 
 ```json
 {
@@ -83,9 +99,20 @@ Converts tab-separated Excel data or comma-separated CSV text data into JSON for
 }
 ```
 
+Comma-separated data:
+
+```json
+{
+  "tool": "excel_to_json_mcp_from_data",
+  "parameters": {
+    "data": "Name,Age,IsStudent\nJohn Doe,25,false\nJane Smith,30,true"
+  }
+}
+```
+
 ### excel_to_json_mcp_from_url
 
-Converts an Excel or CSV file from a provided URL into JSON format.
+Converts an Excel file from a provided URL into JSON format.
 
 #### Parameters
 
@@ -93,13 +120,24 @@ Converts an Excel or CSV file from a provided URL into JSON format.
 |-----------|--------|----------|--------------------------------------------------|
 | url       | string | Yes      | URL pointing to an Excel (.xlsx)                 |
 
+> Note:
+> - Each sheet of the Excel file should contain at least two rows (header row + data row).
+>   1. The first row will be considered as "header" row, and this MCP will use it as column names, subsequently JSON keys.
+>   2. The following rows will be considered as "data" rows, and this MCP will treat them as JSON values.
+> - This Excel file should be in '.xlsx' format.
+> - Each sheet of the Excel file will be converted to a JSON object.
+> - Each JSON object will have 'sheetName' (string) and 'data' (array of objects) properties.
+> - Each JSON object in 'data' array will have properties corresponding to column names.
+> - Each JSON object in 'data' array will have values corresponding to cell values.
+
+
 #### Example Request
 
 ```json
 {
   "tool": "excel_to_json_mcp_from_url",
   "parameters": {
-    "url": "https://example.com/path/to/your/file.xlsx"
+    "url": "https://tools.wtsolutions.cn/example.xlsx"
   }
 }
 ```
@@ -135,28 +173,9 @@ The API automatically detects and converts different data types:
 - **Strings**: Treated as string values
 - **Empty values**: Represented as empty strings
 
-## Requirements on data and url
-
-### excel_to_json_mcp_from_data
-
-- Input data must be tab-separated or comma-separated text with at least two rows (header row + data row).
-  1. The first row will be considered as "header" row, and this API will use it as column names, subsequently JSON keys.
-  2. The following rows will be considered as "data" rows, and this API will use them as JSON values.
-
-### excel_to_json_mcp_from_url
-
-- Each sheet of the Excel file should contain at least two rows (header row + data row).
-  1. The first row will be considered as "header" row, and this API will use it as column names, subsequently JSON keys.
-  2. The following rows will be considered as "data" rows, and this API will use them as JSON values.
-- This Excel file should be in '.xlsx' format.
-- Each sheet of the Excel file will be converted to a JSON object.
-- Each JSON object will have 'sheetName' (string) and 'data' (array of objects) properties.
-- Each JSON object in 'data' array will have properties corresponding to column names.
-- Each JSON object in 'data' array will have values corresponding to cell values.
-
 ## Error Handling
 
-The API returns descriptive error messages for common issues:
+The MCP returns descriptive error messages for common issues:
 
 - `Excel Data Format Invalid`: When input data is not tab-separated or comma-separated
 - `At least 2 rows are required`: When input data has fewer than 2 rows
