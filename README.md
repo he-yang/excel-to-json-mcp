@@ -1,5 +1,7 @@
 # Excel to JSON MCP by WTSolutions
 
+[中文](README-zh.md)
+
 ## Introduction
 
 The **Excel to JSON MCP** (Model Context Protocol) provides a standardized interface for converting Excel and CSV data into JSON format using the Model Context Protocol. This MCP implementation offers two specific tools for data conversion:
@@ -86,28 +88,24 @@ Converts tab-separated Excel data or comma-separated CSV text data into JSON for
 > - The first row will be considered as "header" row, and this MCP will use it as column names, subsequently JSON keys.
 > - The following rows will be considered as "data" rows, and this MCP will treat them as JSON values.
 
-#### Example Request
+#### Example Prompt 1:
 
-Tab-separated data:
+Convert the following tab-separated data into JSON format:
 
-```json
-{
-  "tool": "excel_to_json_mcp_from_data",
-  "parameters": {
-    "data": "Name\tAge\tIsStudent\nJohn Doe\t25\tfalse\nJane Smith\t30\ttrue"
-  }
-}
+```
+Name	Age	IsStudent
+John Doe	25	false
+Jane Smith	30	true
 ```
 
-Comma-separated data:
+#### Example Prompt 2:
 
-```json
-{
-  "tool": "excel_to_json_mcp_from_data",
-  "parameters": {
-    "data": "Name,Age,IsStudent\nJohn Doe,25,false\nJane Smith,30,true"
-  }
-}
+Convert the following comma-separated data into JSON format:
+
+```
+Name,Age,IsStudent
+John Doe,25,false
+Jane Smith,30,true
 ```
 
 ### excel_to_json_mcp_from_url
@@ -131,16 +129,15 @@ Converts an Excel file from a provided URL into JSON format.
 > - Each JSON object in 'data' array will have values corresponding to cell values.
 
 
-#### Example Request
+### Example Prompt 1
 
-```json
-{
-  "tool": "excel_to_json_mcp_from_url",
-  "parameters": {
-    "url": "https://tools.wtsolutions.cn/example.xlsx"
-  }
-}
-```
+Convert Excel file to JSON, file URL: https://tools.wtsolutions.cn/example.xlsx
+
+### Example Prompt 2
+(applicable only when you do not have a URL and working with online AI LLM)
+
+I've jsut uploaded one .xlsx file to you, please extract its URL and send it to MCP tool 'excel_to_json_mcp_from_url', for Excel to JSON conversion.
+
 
 ## Response Format
 
@@ -162,6 +159,76 @@ The MCP tools return a JSON object with the following structure:
   }]
 }
 ```
+
+Above is the response from MCP tool, and in most cases your LLM should interpret the response and present you with a JSON object, for example as below. 
+> Note, different LLM models may have different ways to interpret the JSON object, so please check if the JSON object is correctly interpreted by your LLM model.
+
+
+```json
+{
+  "isError": false,
+  "msg": "success",
+  "data": "[{\"Name\":\"John Doe\",\"Age\":25,\"IsStudent\":false},{\"Name\":\"Jane Smith\",\"Age\":30,\"IsStudent\":true}]"
+}
+```
+
+```json
+{
+  "isError": false,
+  "msg": "success",
+  "data": [
+    {
+      "Name": "John Doe",
+      "Age": 25,
+      "IsStudent": false
+    },
+    {
+      "Name": "Jane Smith",
+      "Age": 30,
+      "IsStudent": true
+    }
+  ]
+}
+
+```
+
+```json
+[
+  {
+    "Name": "John Doe",
+    "Age": 25,
+    "IsStudent": false
+  },
+  {
+    "Name": "Jane Smith",
+    "Age": 30,
+    "IsStudent": true
+  }
+]
+
+```
+
+### Example Failed Response
+
+```json
+{
+  "content": [{
+    "type": "text",
+    "text": "{\"isError\": true, \"msg\": \"Network Error when fetching file\", \"data\": \"\"}"
+  }]
+}
+```
+Above is the response from MCP tool, and in most cases your LLM should interpret the response and present you with a JSON object, for example as below. 
+> Note, different LLM models may have different ways to interpret the JSON object, so please check if the response is correctly interpreted by your LLM model.
+
+```json
+{
+  "isError": true,
+  "msg": "Network Error when fetching file",
+  "data": ""
+}
+```
+or it is also possbile that your LLM would say "Network Error when fetching file, try again later" to you.
 
 ## Data Type Handling
 
