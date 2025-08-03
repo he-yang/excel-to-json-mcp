@@ -10,9 +10,9 @@
 - **excel_to_json_mcp_from_url**：从提供的URL转换Excel文件（.xlsx）
 
 Excel to JSON MCP是WTSolutions的Excel to JSON系列的一部分：
-* [Excel to JSON Web应用：直接在Web浏览器中转换Excel为JSON。](https://excel-to-json.wtsolutions.cn/en/latest/WebApp.html)
-* [Excel to JSON Excel插件：在Excel中转换Excel为JSON，与Excel环境无缝协作。](https://excel-to-json.wtsolutions.cn/en/latest/ExcelAddIn.html)
-* [Excel to JSON API：通过HTTPS POST请求转换Excel为JSON。](https://excel-to-json.wtsolutions.cn/en/latest/API.html)
+* [Excel to JSON Web应用：直接在Web浏览器中转换Excel为JSON。](https://excel-to-json.wtsolutions.cn/zh-cn/latest/WebApp.html)
+* [Excel to JSON Excel插件：在Excel中转换Excel为JSON，与Excel环境无缝协作。](https://excel-to-json.wtsolutions.cn/zh-cn/latest/ExcelAddIn.html)
+* [Excel to JSON API：通过HTTPS POST请求转换Excel为JSON。](https://excel-to-json.wtsolutions.cn/zh-cn/latest/API.html)
 * <mark>Excel to JSON MCP服务：通过AI模型MCP SSE/流式HTTP请求转换Excel为JSON。</mark>（<-- 您当前所在位置。）
 
 ## 服务器配置
@@ -23,17 +23,17 @@ Excel to JSON MCP是WTSolutions的Excel to JSON系列的一部分：
 
 传输方式：SSE
 
-URL：https://mcp.wtsolutions.cn/excel-to-json-mcp-sse
+URL：https://mcp.wtsolutions.cn/sse
 
 服务器配置JSON：
 
 ```json
 {
   "mcpServers": {
-    "excel_to_json_by_WTSolutions": {
+    "excel2json": {
       "args": [
         "mcp-remote",
-        "https://mcp.wtsolutions.cn/excel-to-json-mcp-sse"
+        "https://mcp.wtsolutions.cn/sse"
       ],
       "command": "npx",
       "tools": [
@@ -49,17 +49,17 @@ URL：https://mcp.wtsolutions.cn/excel-to-json-mcp-sse
 
 传输方式：流式HTTP
 
-URL：https://mcp.wtsolutions.cn/excel-to-json-mcp-shttp
+URL：https://mcp.wtsolutions.cn/mcp
 
 服务器配置JSON：
 
 ```json
 {
   "mcpServers": {
-    "excel_to_json_by_WTSolutions": {
+    "excel2json": {
       "args": [
         "mcp-remote",
-        "https://mcp.wtsolutions.cn/excel-to-json-mcp-shttp"
+        "https://mcp.wtsolutions.cn/mcp"
       ],
       "command": "npx",
       "tools": [
