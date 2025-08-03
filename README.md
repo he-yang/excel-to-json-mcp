@@ -23,23 +23,16 @@ Available MCP Servers (SSE and Streamable HTTP):
 
 Transport: SSE
 
-URL: https://mcp.wtsolutions.cn/sse
+URL: https://mcp.wtsolutions.cn/excel-to-json-mcp-sse
 
 Server Config JSON:
 
 ```json
 {
   "mcpServers": {
-    "excel2json": {
-      "args": [
-        "mcp-remote",
-        "https://mcp.wtsolutions.cn/sse"
-      ],
-      "command": "npx",
-      "tools": [
-        "excel_to_json_mcp_from_data",
-        "excel_to_json_mcp_from_url"
-      ]
+    "excel2jsonsse": {
+      "type": "sse",
+      "url": "https://mcp.wtsolutions.cn/sse"
     }
   }
 }
@@ -49,23 +42,16 @@ Server Config JSON:
 
 Transport: Streamable HTTP
 
-URL: https://mcp.wtsolutions.cn/mcp
+URL: https://mcp.wtsolutions.cn/excel-to-json-mcp-shttp
 
 Server Config JSON:
 
 ```json
 {
   "mcpServers": {
-    "excel2json": {
-      "args": [
-        "mcp-remote",
-        "https://mcp.wtsolutions.cn/mcp"
-      ],
-      "command": "npx",
-      "tools": [
-        "excel_to_json_mcp_from_data",
-        "excel_to_json_mcp_from_url"
-      ]
+    "excel2jsonmcp": {
+      "type": "streamableHttp",
+      "url": "https://mcp.wtsolutions.cn/mcp"
     }
   }
 }

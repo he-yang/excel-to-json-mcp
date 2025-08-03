@@ -30,16 +30,9 @@ URL：https://mcp.wtsolutions.cn/sse
 ```json
 {
   "mcpServers": {
-    "excel2json": {
-      "args": [
-        "mcp-remote",
-        "https://mcp.wtsolutions.cn/sse"
-      ],
-      "command": "npx",
-      "tools": [
-        "excel_to_json_mcp_from_data",
-        "excel_to_json_mcp_from_url"
-      ]
+    "excel2jsonsse": {
+      "type": "sse",
+      "url": "https://mcp.wtsolutions.cn/sse"
     }
   }
 }
@@ -56,16 +49,9 @@ URL：https://mcp.wtsolutions.cn/mcp
 ```json
 {
   "mcpServers": {
-    "excel2json": {
-      "args": [
-        "mcp-remote",
-        "https://mcp.wtsolutions.cn/mcp"
-      ],
-      "command": "npx",
-      "tools": [
-        "excel_to_json_mcp_from_data",
-        "excel_to_json_mcp_from_url"
-      ]
+    "excel2jsonmcp": {
+      "type": "streamableHttp",
+      "url": "https://mcp.wtsolutions.cn/mcp"
     }
   }
 }
