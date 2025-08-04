@@ -17,7 +17,30 @@ Excel to JSON MCP is part of Excel to JSON by WTSolutions:
 
 ## Server Config
 
-Available MCP Servers (SSE and Streamable HTTP):
+Available MCP Servers :
+
+### Using Stdio(NPX)
+
+Server Config JSON:
+```json
+{
+  "mcpServers": {
+    "excel2json": {
+      "args": [
+        "mcp-remote",
+        "https://mcp.wtsolutions.cn/sse",
+        "--transport",
+        "sse-only"
+      ],
+      "command": "npx",
+      "tools": [
+        "excel_to_json_mcp_from_data",
+        "excel_to_json_mcp_from_url"
+      ]
+    }
+  }
+}
+```
 
 ### Using SSE
 

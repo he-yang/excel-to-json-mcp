@@ -17,7 +17,31 @@ Excel to JSON MCP是WTSolutions的Excel to JSON系列的一部分：
 
 ## 服务器配置
 
-可用的MCP服务器（SSE和流式HTTP）：
+可用的MCP服务器：
+
+### 使用Stdio(NPX)
+
+服务器配置 JSON:
+
+```json
+{
+  "mcpServers": {
+    "excel2json": {
+      "args": [
+        "mcp-remote",
+        "https://mcp.wtsolutions.cn/sse",
+        "--transport",
+        "sse-only"
+      ],
+      "command": "npx",
+      "tools": [
+        "excel_to_json_mcp_from_data",
+        "excel_to_json_mcp_from_url"
+      ]
+    }
+  }
+}
+```
 
 ### 使用SSE
 
