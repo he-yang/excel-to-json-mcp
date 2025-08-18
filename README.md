@@ -99,7 +99,7 @@ Converts tab-separated Excel data or comma-separated CSV text data into JSON for
 
 #### Example Prompt 1:
 
-Convert the following tab-separated data into JSON format:
+Convert the following data into JSON format:
 
 ```
 Name	Age	IsStudent
@@ -109,7 +109,7 @@ Jane Smith	30	true
 
 #### Example Prompt 2:
 
-Convert the following comma-separated data into JSON format:
+Convert the following data into JSON format:
 
 ```
 Name,Age,IsStudent

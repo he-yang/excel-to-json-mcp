@@ -100,7 +100,7 @@ URL：https://mcp.wtsolutions.cn/mcp
 
 #### 示例提示词1：
 
-将以下制表符分隔的数据转换为JSON格式：
+将以下数据转换为JSON格式：
 
 ```
 Name	Age	IsStudent
@@ -110,7 +110,7 @@ Jane Smith	30	true
 
 #### 示例提示词2：
 
-将以下逗号分隔的数据转换为JSON格式：
+将以下数据转换为JSON格式：
 
 ```
 Name,Age,IsStudent
