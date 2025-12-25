@@ -1,0 +1,5 @@
+temp
+node_modules
+src/test.js
+src/f.js
+obfuscator-config.json

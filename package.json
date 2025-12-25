@@ -1,0 +1,46 @@
+{
+  "name": "excel-to-json-mcp",
+  "version": "0.3.0",
+  "description": "Excel to JSON by WTSolutions MCP",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/he-yang/excel-to-json-mcp.git"
+  },
+  "keywords": [
+    "excel",
+    "json",
+    "mcp",
+    "excel-to-json",
+    "model-context-protocol",
+    "data",
+    "url"
+  ],
+  "author": "WTSolutions",
+  "license": "SEE LICENSE IN terms.md",
+  "type": "module",
+  "bin": {
+    "excel-to-json-mcp": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc && cp src/functions.js build/ && chmod 755 build/index.js",
+    "try": "node build/index.js",
+    "dev": "npx uglify-js src/f.js -o src/functions.js && javascript-obfuscator src/functions.js --output src/functions.js --config obfuscator-config.json"
+  },
+  "files": [
+    "build"
+  ],
+  "bugs": {
+    "url": "https://github.com/he-yang/excel-to-json-mcp/issues"
+  },
+  "homepage": "https://github.com/he-yang/excel-to-json-mcp#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.1",
+    "xlsx": "^0.18.5",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "typescript": "^5.9.3"
+  }
+}

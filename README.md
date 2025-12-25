@@ -12,6 +12,7 @@ The **Excel to JSON MCP** (Model Context Protocol) provides a standardized inter
 Excel to JSON MCP is part of Excel to JSON by WTSolutions:
 * [Excel to JSON Web App: Convert Excel to JSON directly in Web Browser.](https://excel-to-json.wtsolutions.cn/en/latest/WebApp.html)
 * [Excel to JSON Excel Add-in: Convert Excel to JSON in Excel, works with Excel environment seamlessly.](https://excel-to-json.wtsolutions.cn/en/latest/ExcelAddIn.html)
+* [Excel to JSON WPS Add-in: Convert Excel to JSON in WPS, works with WPS environment seamlessly.](https://excel-to-json.wtsolutions.cn/en/latest/WPSAddIn.html)
 * [Excel to JSON API: Convert Excel to JSON by HTTPS POST request.](https://excel-to-json.wtsolutions.cn/en/latest/API.html)
 * <mark>Excel to JSON MCP Service: Convert Excel to JSON by AI Model MCP SSE/StreamableHTTP request.</mark> (<-- You are here.)
 
@@ -91,6 +92,7 @@ Converts tab-separated Excel data or comma-separated CSV text data into JSON for
 | Parameter | Type   | Required | Description                                                                 |
 |-----------|--------|----------|-----------------------------------------------------------------------------|
 | data      | string | Yes      | Tab-separated or comma-separated text data with at least two rows (header row + data row) |
+| options   | object | No       | Optional configuration object for customizing the conversion process. If you do not have a Pro Code, please pass only `data` parameter but not `options` parameter. |
 
 > Note:
 > Input data must be tab-separated (Excel) or comma-separated (CSV) text with at least two rows (header row + data row).
@@ -126,6 +128,7 @@ Converts an Excel file from a provided URL into JSON format.
 | Parameter | Type   | Required | Description                                      |
 |-----------|--------|----------|--------------------------------------------------|
 | url       | string | Yes      | URL pointing to an Excel (.xlsx)                 |
+| options   | object | No       | Optional configuration object for customizing the conversion process. If you do not have a Pro Code, please pass only `url` parameter but not `options` parameter. |
 
 > Note:
 > - Each sheet of the Excel file should contain at least two rows (header row + data row).
@@ -147,6 +150,28 @@ Convert Excel file to JSON, file URL: https://tools.wtsolutions.cn/example.xlsx
 
 I've jsut uploaded one .xlsx file to you, please extract its URL and send it to MCP tool 'excel_to_json_mcp_from_url', for Excel to JSON conversion.
 
+## Options Object
+
+If you do not have a Pro Code, you can still use this MCP tool by passing only `data` or `url` parameter. However, please note that the conversion rules will be limited to the default ones as listed in the "Default" column in the following table.
+
+The optional `options` object can contain the following properties for customizing the conversion process. This feature requires a valid Pro Code (Excel to JSON, JSON to Excel by WTSolutions Subscription), see [Pricing](https://excel-to-json.wtsolutions.cn/en/latest/pricing.html).
+
+| Property             | Type   | Default   | Description                                                                 |
+|----------------------|--------|-----------|-----------------------------------------------------------------------------|
+| proCode              | string | ""        | Pro Code for custom conversion rules which requires a valid subscription to Excel to JSON service. |
+| jsonMode             | string | "flat"    | Format mode for JSON output: "nested" or "flat" |
+| header               | string | "row"     | Specifies which row/column to use as headers: "row" (first row) or "column" (first column) |
+| delimiter            | string | "."       | Delimiter character for nested JSON keys when using `jsonMode`: "nested", acceptable delimiters are ".", "_", "__", "/". |
+| emptyCell            | string | "emptyString" | Handling of empty cells: "emptyString", "null", or "exclude" |
+| booleanFormat        | string | "trueFalse" | Format for boolean values: "trueFalse", "10", or "string" |
+| jsonFormat           | string | "arrayOfObject" | Overall JSON output format: "arrayOfObject" or "2DArray" |
+| singleObjectFormat   | string | "array"   | Format when result has only one object: "array" (keep as array) or "object" (return as single object) |
+
+> Note:
+> - `delimiter` works only when `jsonMode` is "nested".
+> - `singleObjectFormat` works only when `jsonFormat` is "arrayOfObject". 
+> - `jsonFormat` as "2DArray" works only when `jsonMode` is "flat".
+> - `proCode` is mandatory if you use any other options.
 
 ## Response Format
 
@@ -268,8 +293,7 @@ By using Excel to JSON MCP, you agree to the [service agreement](TERMS.md), and 
 
 ## Pricing
 
-Free for now.
+Using default conversion rules, free.
 
-## Donation
+Using custom conversion rules, requires a Pro Code. Please refer to the [pricing page](https://excel-to-json.wtsolutions.cn/en/latest/pricing.html) for more details.
 
-[https://buymeacoffee.com/wtsolutions](https://buymeacoffee.com/wtsolutions)

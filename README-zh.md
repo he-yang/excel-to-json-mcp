@@ -1,6 +1,6 @@
 # Excel to JSON MCP by WTSolutions
 
-[English](README.md)
+[English](README.md) 
 
 ## 介绍
 
@@ -12,6 +12,7 @@
 Excel to JSON MCP是WTSolutions的Excel to JSON系列的一部分：
 * [Excel to JSON Web应用：直接在Web浏览器中转换Excel为JSON。](https://excel-to-json.wtsolutions.cn/zh-cn/latest/WebApp.html)
 * [Excel to JSON Excel插件：在Excel中转换Excel为JSON，与Excel环境无缝协作。](https://excel-to-json.wtsolutions.cn/zh-cn/latest/ExcelAddIn.html)
+* [Excel to JSON WPS插件：在WPS中转换Excel为JSON，与WPS环境无缝协作。](https://excel-to-json.wtsolutions.cn/zh-cn/latest/WPSAddIn.html)
 * [Excel to JSON API：通过HTTPS POST请求转换Excel为JSON。](https://excel-to-json.wtsolutions.cn/zh-cn/latest/API.html)
 * <mark>Excel to JSON MCP服务：通过AI模型MCP SSE/流式HTTP请求转换Excel为JSON。</mark>（<-- 您当前所在位置。）
 
@@ -92,6 +93,7 @@ URL：https://mcp.wtsolutions.cn/mcp
 | 参数 | 类型 | 是否必需 | 描述 |
 |-----------|--------|----------|-----------------------------------------------------------------------------|
 | data | string | 是 | 制表符分隔或逗号分隔的文本数据，至少包含两行（标题行+数据行） |
+| options | object | 否 | 用于自定义转换过程的可选配置对象。如果您没有Pro Code，请不要传递此参数。 |
 
 > 注意：
 > 输入数据必须是制表符分隔（Excel）或逗号分隔（CSV）的文本，至少包含两行（标题行+数据行）。
@@ -127,6 +129,7 @@ Jane Smith,30,true
 | 参数 | 类型 | 是否必需 | 描述 |
 |-----------|--------|----------|--------------------------------------------------|
 | url | string | 是 | 指向Excel文件（.xlsx）的URL |
+| options | object | 否 | 用于自定义转换过程的可选配置对象。如果您没有Pro Code，请仅传递`url`参数，而不要传递`options`参数。 |
 
 > 注意：
 > - Excel文件的每个工作表应至少包含两行（标题行+数据行）。
@@ -148,6 +151,28 @@ Jane Smith,30,true
 
 我刚刚向您上传了一个.xlsx文件，请提取其URL并将其发送到MCP工具'excel_to_json_mcp_from_url'，以进行Excel到JSON的转换。
 
+## 选项对象
+
+如果您没有Pro Code，您可以继续使用此MCP工具，只传递`url`或`data`参数，而不要传递`options`参数。但请注意，转换规则使用默认规则的限制(也就是下方表格中的默认值列)。
+
+可选的`options`对象可以包含以下属性，用于自定义转换过程。此功能需要有效的Pro Code，查看[定价](https://excel-to-json.wtsolutions.cn/zh-cn/latest/pricing.html)。
+
+| 属性             | 类型   | 默认值   | 描述                                                                 |
+|----------------------|--------|-----------|-----------------------------------------------------------------------------|
+| proCode              | string | ""        | 用于自定义转换规则的Pro Code，需要有效的Excel to JSON服务订阅。 |
+| jsonMode             | string | "flat"    | JSON输出的格式模式："nested"（嵌套）或"flat"（扁平） |
+| header               | string | "row"     | 指定使用哪一行/列作为标题："row"（第一行）或"column"（第一列） |
+| delimiter            | string | "."       | 当使用`jsonMode`："nested"时，嵌套JSON键的分隔符，可接受的分隔符为："."、"_"、"__"、"/"。 |
+| emptyCell            | string | "emptyString" | 空单元格的处理方式："emptyString"（空字符串）、"null"（空值）或"exclude"（排除） |
+| booleanFormat        | string | "trueFalse" | 布尔值的格式："trueFalse"（true/false）、"10"（1/0）或"string"（字符串） |
+| jsonFormat           | string | "arrayOfObject" | 整体JSON输出格式："arrayOfObject"（对象数组）或"2DArray"（二维数组） |
+| singleObjectFormat   | string | "array"   | 当结果只有一个对象时的格式："array"（保持为数组）或"object"（返回单个对象） |
+
+> 注意：
+> - 只有当`jsonMode`为"nested"时，`delimiter`才会生效。
+> - 只有当`jsonFormat`为"arrayOfObject"时，`singleObjectFormat`才会生效。 
+> - 只有当`jsonMode`为"flat"时，`jsonFormat`为"2DArray"才会生效。
+> - 如果您使用任何其他选项，则`proCode`是必需的。
 
 ## 响应格式
 
@@ -268,9 +293,6 @@ MCP针对常见问题返回描述性错误消息：
 
 
 ## 定价
+使用默认的转换规则，免费。
+使用自定义的转换规则，需要购买Pro Code，参考[定价](https://excel-to-json.wtsolutions.cn/zh-cn/latest/pricing.html)。
 
-目前免费。
-
-## 捐赠
-
-[https://buymeacoffee.com/wtsolutions](https://buymeacoffee.com/wtsolutions)

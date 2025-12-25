@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Effective Date:** 2025-7-15
+**Effective Date:** 2025-12-25
 
 ## 1. Introduction
 
@@ -15,28 +15,36 @@ This Privacy Policy applies to the Service, which is a MCP or API server service
 ## 3. Data We Do Not Collect
 
 We want to assure you that:
-- We do not store or retain any data from your Excel files , Excel data or CSV data.
-- We do not access, collect, or use any personal or sensitive information.
+- We do not store or retain any data from your Excel files, Excel data, or CSV data.
+- We do not access, collect, or use any personal or sensitive information from your Excel/CSV data.
 
-## 4. Your Responsibilities
+## 4. Data We Collect for Subscription Management
+
+For Pro feature subscriptions, we collect and store:
+- Your name and contact information for subscription management purposes.
+- Payment information (processed by our secure payment gateway Stripe or Paddle)
+- Subscription status and billing history
+- Usage data related to Pro features for service improvement, such as Pro Code usage.
+
+## 5. Your Responsibilities
 
 While we take steps to ensure your data remains private, you are responsible for:
 - Ensuring the security of your MCP client, Web Browser, Request Client etc. which you use to access the Service.
 - Managing and protecting any sensitive or confidential data within your Excel files, Excel Data, CSV Data.
 - Complying with applicable data protection laws and regulations.
+- Maintaining the accuracy of your billing information and promptly updating any changes.
 
-## 5. Third-Party Services
+## 6. Third-Party Services
 
 The Service is hosted by Cloudflare Workers.
 
 For more information about Cloudflare and their privacy practices, please visit [Cloudflare's Privacy Policy](https://www.cloudflare.com/privacypolicy/).
 
-
-## 8. Changes to This Privacy Policy
+## 7. Changes to This Privacy Policy
 
 We may update this Privacy Policy from time to time. Any changes will be effective immediately upon posting the revised policy on our website or repository. Your continued use of the Service after any changes constitutes your acceptance of the updated Privacy Policy.
 
-## 9. Contact Us
+## 8. Contact Us
 
 If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at:
 
