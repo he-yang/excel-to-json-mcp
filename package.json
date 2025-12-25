@@ -1,6 +1,6 @@
 {
   "name": "excel-to-json-mcp",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Excel to JSON by WTSolutions MCP",
   "main": "index.js",
   "repository": {

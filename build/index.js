@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
@@ -5,7 +6,7 @@ import { processData, processURLExcel, URLs } from './functions.js';
 // Create server instance
 const server = new McpServer({
     name: "Excel to JSON MCP by WTSolutions",
-    version: "0.3.0",
+    version: "0.3.1",
 });
 server.registerTool("excel_to_json_mcp_from_data", {
     title: "Excel to JSON MCP by WTSolutions - from data",

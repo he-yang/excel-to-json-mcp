@@ -23,63 +23,49 @@ Available MCP Servers :
 ### Using Stdio(NPX)
 
 Server Config JSON:
+
+Case 1 : Free Version
+
+If you are using the free version:
+
 ```json
 {
   "mcpServers": {
-    "excel2json": {
+    "excel-to-json-mcp": {
       "args": [
-        "mcp-remote",
-        "https://mcp.wtsolutions.cn/sse",
-        "--transport",
-        "sse-only"
+        "excel-to-json-mcp"        
+      ],
+      "command": "npx"
+    }
+  }
+}
+```
+
+Case 2 : Pro Version
+
+If you are using the pro version (with a valid proCode):
+
+```json
+{
+  "mcpServers": {
+    "excel-to-json-mcp": {
+      "args": [
+        "excel-to-json-mcp"        
       ],
       "command": "npx",
-      "tools": [
-        "excel_to_json_mcp_from_data",
-        "excel_to_json_mcp_from_url"
-      ]
+      "env": {
+        "proCode": "type in your proCode here"
+      }
     }
   }
 }
 ```
 
 ### Using SSE
+Not supported since v1.3.0
 
-Transport: SSE
-
-URL: https://mcp.wtsolutions.cn/excel-to-json-mcp-sse
-
-Server Config JSON:
-
-```json
-{
-  "mcpServers": {
-    "excel2jsonsse": {
-      "type": "sse",
-      "url": "https://mcp.wtsolutions.cn/sse"
-    }
-  }
-}
-
-```
 ### Using Streamable HTTP
-
-Transport: Streamable HTTP
-
-URL: https://mcp.wtsolutions.cn/excel-to-json-mcp-shttp
-
-Server Config JSON:
-
-```json
-{
-  "mcpServers": {
-    "excel2jsonmcp": {
-      "type": "streamableHttp",
-      "url": "https://mcp.wtsolutions.cn/mcp"
-    }
-  }
-}
-```
+Not supported since v1.3.0
 
 ## MCP Tools
 

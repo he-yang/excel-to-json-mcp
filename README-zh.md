@@ -24,63 +24,48 @@ Excel to JSON MCP是WTSolutions的Excel to JSON系列的一部分：
 
 服务器配置 JSON:
 
+Case 1 : 免费版
+
+如果您使用的是免费版本：
+
 ```json
 {
   "mcpServers": {
-    "excel2json": {
+    "excel-to-json-mcp": {
       "args": [
-        "mcp-remote",
-        "https://mcp.wtsolutions.cn/sse",
-        "--transport",
-        "sse-only"
+        "excel-to-json-mcp"        
+      ],
+      "command": "npx"
+    }
+  }
+}
+```
+
+Case 2 : Pro版本
+
+如果您使用的是Pro版本（需要有有效Pro Code）：
+
+```json
+{
+  "mcpServers": {
+    "excel-to-json-mcp": {
+      "args": [
+        "excel-to-json-mcp"        
       ],
       "command": "npx",
-      "tools": [
-        "excel_to_json_mcp_from_data",
-        "excel_to_json_mcp_from_url"
-      ]
+      "env": {
+        "proCode": "type in your proCode here"
+      }
     }
   }
 }
 ```
 
 ### 使用SSE
+从 v0.3.0 开始，不再支持。
 
-传输方式：SSE
-
-URL：https://mcp.wtsolutions.cn/sse
-
-服务器配置JSON：
-
-```json
-{
-  "mcpServers": {
-    "excel2jsonsse": {
-      "type": "sse",
-      "url": "https://mcp.wtsolutions.cn/sse"
-    }
-  }
-}
-
-```
 ### 使用流式HTTP
-
-传输方式：流式HTTP
-
-URL：https://mcp.wtsolutions.cn/mcp
-
-服务器配置JSON：
-
-```json
-{
-  "mcpServers": {
-    "excel2jsonmcp": {
-      "type": "streamableHttp",
-      "url": "https://mcp.wtsolutions.cn/mcp"
-    }
-  }
-}
-```
+从 v0.3.0 开始，不再支持。
 
 ## MCP工具
 
